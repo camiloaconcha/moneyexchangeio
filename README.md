@@ -10,6 +10,8 @@ This project is about currency exchange initialy developed for moneyxchange.io b
 
 In the project directory, you can run:
 
+### `npm install `
+
 ### `npm start`
 
 Runs the app in the development mode.<br>
