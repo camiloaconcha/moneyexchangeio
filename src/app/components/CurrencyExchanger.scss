@@ -1,0 +1,103 @@
+@import './../../sass/index';
+
+.exchanger {
+  height: 120px;
+  padding-top: 210px;
+  margin: auto;
+
+  &__button {
+    background: $blue;
+    color: $white;
+    border: none;
+    height: 59px;
+    width: 300px;
+    font-weight: bold;
+    font-size: 18px;
+  }
+
+  &__button:disabled {
+    background: $bluegray;
+    color: $gray;
+    cursor: not-allowed;
+  }
+
+  &__input {
+    background: $white;
+    border-radius: 2px;
+    border: solid $gray;
+    text-align: center;
+    color: $dark-gray;
+    font-size: 18px;
+    width: 350px;
+    height: 40px;
+  }
+}
+
+@include for-size(phone) {
+  .exchanger {
+    margin: 0 0 0 12px;
+    width: 200px;
+    &__button {
+      margin: 40px 0 0 20px;
+    }
+  }
+}
+@include for-size(phone-plus) {
+  .exchanger {
+    margin: 0 0 0 20px;
+    width: 200px;
+    &__button {
+      margin: 40px 0 0 30px;
+    }
+  }
+}
+
+@include for-size(desktop) {
+  .exchanger {
+    margin: auto;
+    width: 720px;
+    &__button {
+      margin: 10px 0 0 200px;
+    }
+  }
+}
+
+@include for-size(tablet-landscape) {
+  .exchanger {
+    margin: auto;
+    width: 720px;
+    &__button {
+      margin: 10px 0 0 200px;
+    }
+  }
+}
+
+@include for-size(phone-x) {
+  .exchanger {
+    margin: 0 0 0 10px;
+  }
+}
+
+@include for-size(extra-large) {
+  .exchanger {
+    margin: auto;
+  }
+}
+
+@include for-size(small-phone) {
+  .exchanger {
+    margin: 0 0 0 32px;
+    &__button {
+      background: $blue;
+      color: $white;
+      border: none;
+      height: 59px;
+      width: 200px;
+    }
+
+    &__input {
+        width: 250px;
+        height: 40px;
+      }
+  }
+}

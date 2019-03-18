@@ -1,0 +1,33 @@
+@import 'colors';
+@import 'mixins';
+.container {
+  height: 537px;
+  background: $gray;
+  width: 100%;
+  padding: 0;
+}
+@include for-size(phone) {
+  .container {
+    height: 427px;
+  }
+}
+@include for-size(phone-plus) {
+  .container {
+    height: 496px;
+  }
+}
+@include for-size(phone-x) {
+  .container {
+    height: 572px;
+  }
+}
+@include for-size(desktop) {
+  .container {
+    height: 537px;
+  }
+}
+@include for-size(extra-large) {
+  .container {
+    height: 1440px;
+  }
+}
