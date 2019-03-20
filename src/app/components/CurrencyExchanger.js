@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import { API, API_KEY, EXCHANGE } from '../constants/endpoints';
+import { connect } from 'react-redux';
 import { EUR, USD, EURO, DOLLAR } from '../constants/currencies';
 import NumberFormat from 'react-number-format';
+import { exchangeRequest } from './../actions/exchangeRequest';
+
+const mapStateToProps = state => ({
+  ...state
+});
+
+const mapDispatchToProps = dispatch => ({
+  exchangeRequest: state => dispatch(exchangeRequest(state))
+});
 
 class CurrencyExchanger extends Component {
   constructor(props) {
@@ -15,22 +23,15 @@ class CurrencyExchanger extends Component {
       result: '',
       amount: ''
     };
-    this.exchangeRequest = this.exchangeRequest.bind(this);
   }
 
-  exchangeRequest() {
-    axios
-      .get(
-        `${API}${EXCHANGE}?${API_KEY}&from=${this.state.fromCurrency}&to=${
-          this.state.toCurrency
-        }&amount=${this.state.amount}`
-      )
-      .then(response => this.setState({ result: response.data.result }));
-  }
+  exchangeRequest = event => {
+    this.props.exchangeRequest(this.state);
+  };
 
   render() {
     return (
-      <div className='exchanger'>
+      <div className="exchanger">
         <NumberFormat
           value={this.state.formattedAmount}
           thousandSeparator={true}
@@ -44,7 +45,7 @@ class CurrencyExchanger extends Component {
         />
 
         <NumberFormat
-          value={this.state.result}
+          value={this.props.reducerExchange.result}
           thousandSeparator={true}
           prefix={EURO}
           disabled
@@ -56,10 +57,18 @@ class CurrencyExchanger extends Component {
           className="exchanger__input"
         />
 
-        <button className="exchanger__button" onClick={this.exchangeRequest} disabled={!this.state.amount}>CALCULATE</button>
+        <button
+          className="exchanger__button"
+          onClick={this.exchangeRequest}
+          disabled={!this.state.amount}
+        >
+          CALCULATE
+        </button>
       </div>
     );
   }
 }
-
-export default CurrencyExchanger;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CurrencyExchanger);
