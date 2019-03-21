@@ -1,12 +1,16 @@
 This project is about currency exchange initialy developed for moneyxchange.io by @camiloaconcha it was built using
 
-in the last version i have changed the code ,so now is working with redux !
 
 -ReactJS
 -SaSS
 -Babel
 -Yarn
 -Npm
+
+
+in the last version i have changed the code ,so now is working with redux !
+
+
 
 ## Available Scripts
 
